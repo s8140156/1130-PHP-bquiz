@@ -1,3 +1,5 @@
+<?php include_once "db.php"; ?>
+<!-- 記得要宣告 -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +19,7 @@
     </div>
 </div>
 	<header class="container">
+		
 		<img src="" alt="">
 	</header>
 	<main class="container">
@@ -31,16 +34,24 @@
 					<td>刪除</td>
 					<td></td>
 				</tr>
+				<?php
+				$rows=$Title->all();
+				foreach($rows as $row){
+				?>
 				<tr>
-					<td><img src="" style="width:300px;height:30px" alt=""></td>
-					<td><input type="text" name="" id="" style="width:90%;"></td>
-					<td><input type="radio" name="" id=""></td>
-					<td><input type="checkbox" name="" id=""></td>
+					<td><img src="./img/<?=$row['img'];?>" style="width:300px;height:30px" alt=""></td>
+					<td><input type="text" name="text[]" id="" value="<?=$row['text'];?>"style="width:90%;"></td>
+					<td><input type="radio" name="sh" id="" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>></td>
+					<td><input type="checkbox" name="del" id="" value="<?=$row['id'];?>"></td>
 					<td><input class='btn btn-warning' type="button" value="更新圖片"></td>
+					<input type="hidden" name="id[]" value="<?=$row['id'];?>">
 				</tr>
+				<?php
+				}
+				?>
 			</table>
 			<div class="d-flex justify-content-between">
-				<div><input type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=title&#39;)" value="新增網站標題圖片"></div>
+				<div><input type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;title.php?do=title&#39;)" value="新增網站標題圖片"></div>
 				<div>
 					<input type="submit" value="修改確定">
 					<input type="reset" value="重置">
