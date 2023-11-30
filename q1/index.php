@@ -43,7 +43,7 @@
 				?>
 				<tr>
 					<td><img src="./img/<?=$row['img'];?>" style="width:300px;height:30px" alt=""></td>
-					<td><input type="text" name="text[]" id="" value="<?=$row['text'];?>"style="width:90%;"></td>
+					<td><input type="text" name="text[]" id="" value="<?=$row['text'];?>"style="width:90%"></td>
 					<!-- 將name=使用"text[]"可以讓新增的每筆text內容全部放到 陣列並排序(就可依序而不會只會被最新的筆數蓋掉) -->
 					<td><input type="radio" name="sh" id="" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>></td>
 					<!-- 三元運算式：如果對應資料庫sh顯示為1時, 增加'checked屬性 若不是1不需增加(顯示空值即可)' -->

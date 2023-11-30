@@ -54,25 +54,25 @@ class DB
         return $this->math('min',$col,$where,$other);
     }
 
-    function total($id)
-    {
-        // global $pdo;
-        $sql = "select count(`id`) from `$this->table` ";
+    // function total($id)
+    // {
+    //     // global $pdo;
+    //     $sql = "select count(`id`) from `$this->table` ";
 
-        if (is_array($id)) {
-            foreach ($id as $col => $value) {
-                $tmp[] = "`$col`='$value'";
-            }
-            $sql .= " where " . join(" && ", $tmp);
-        } else if (is_numeric($id)) {
-            $sql .= " where `id`='$id'";
-        } else {
-            echo "錯誤:參數的資料型態比須是數字或陣列";
-        }
-        //echo 'find=>'.$sql;
-        $row = $this->pdo->query($sql)->fetchColumn();
-        return $row;
-    }
+    //     if (is_array($id)) {
+    //         foreach ($id as $col => $value) {
+    //             $tmp[] = "`$col`='$value'";
+    //         }
+    //         $sql .= " where " . join(" && ", $tmp);
+    //     } else if (is_numeric($id)) {
+    //         $sql .= " where `id`='$id'";
+    //     } else {
+    //         echo "錯誤:參數的資料型態比須是數字或陣列";
+    //     }
+    //     //echo 'find=>'.$sql;
+    //     $row = $this->pdo->query($sql)->fetchColumn();
+    //     return $row;
+    // }
 
     function find($id)
     {
@@ -127,7 +127,7 @@ class DB
         } else if (is_numeric($id)) {
             $sql .= " `id`='$id'";
         } else {
-            echo "錯誤:參數的資料型態比須是數字或陣列";
+            echo "錯誤:參數的資料型態必須是數字或陣列";
         }
         //echo $sql;
 
