@@ -21,14 +21,15 @@
 	<header class="container">
 		<?php
 		$img=$Title->find(['sh'=> 1]);
-		//dd($img);
+		// dd($img);
 		?>
 		<img src="./img/<?=$img['img'];?>" alt="">
 	</header>
 	<main class="container">
 		<h3 class="text-center">網站標題管理</h3>
 		<hr>
-		<form action="" method="post">
+		<form action="edit_title.php" method="post">
+			<!-- 找到原來沒有給這張表單要執行的地方 天啊 -->
 			<table class="table table-bodered text-center">
 				<tr>
 					<td>網站標題</td>
@@ -49,7 +50,7 @@
 					<!-- 三元運算式：如果對應資料庫sh顯示為1時, 增加'checked屬性 若不是1不需增加(顯示空值即可)' -->
 					<td><input type="checkbox" name="del[]" id="" value="<?=$row['id'];?>"></td>
 					<!-- also del因為可能有多筆刪除 在name加上del[],並給予value 從資料庫取得對應哪個id的資料-->
-					<td><input class='btn btn-warning' type="button" value="更新圖片"></td>
+					<td><input class='btn btn-warning' type="button" value="更新圖片" onclick="op('#cover','#cvr','upload_title.php?id=<?=$row['id'];?>')"></td>
 					<input type="hidden" name="id[]" value="<?=$row['id'];?>">
 				</tr>
 				<?php
