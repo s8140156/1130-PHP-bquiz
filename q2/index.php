@@ -8,21 +8,6 @@
 	<title>題組二</title>
 	<link rel="stylesheet" href="../css/bootstrap.css">
 	<link rel="stylesheet" href="../css/css.css">
-	<style>
-		fieldset.scheduler-border {
-			border: 1px groove #ddd !important;
-			padding: 0 1.4em 1.4em 1.4em !important;
-			margin: 0 0 1.5em 0 !important;
-			-webkit-box-shadow: 0px 0px 0px 0px #000;
-			box-shadow: 0px 0px 0px 0px #000;
-		}
-
-		legend.scheduler-border {
-			font-size: 1.2em !important;
-			font-weight: bold !important;
-			text-align: left !important;
-		}
-	</style>
 </head>
 
 <body>
@@ -30,8 +15,8 @@
 		<h1 class="text-center">問卷調查</h1>
 	</header>
 	<main class="container">
-		<fieldset class="scheduler-border">
-			<legend class="scheduler-border">目前位置:首頁 > 問卷調查</legend>
+		<fieldset>
+			<legend>目前位置:首頁 > 問卷調查</legend>
 			<table class="table">
 				<tr>
 					<th>編號</th>
@@ -41,18 +26,20 @@
 					<th>狀態</th>
 				</tr>
 			<?php
-			$ques=$Que->all(['subject_id'=>0]);
-			foreach($ques as $ind => $que){
+			$ques=$Que->all(['subject_id'=>0,'sh'=>1]);
+			foreach($ques as $idx => $que){
+				// 這邊應該是接收後台管理已選定的要顯示/隱藏的主題訊息
+				// 從資料庫撈出指定id=0的主題 及'sh'是1 所以才要顯示出來
 
 			?>
 
 
 				<tr>
-					<td><?=$ind+1;?></td>
+					<td><?=$idx+1;?></td>
 					<td><?=$que['text'];?></td>
 					<td><?=$que['count'];?></td>
-					<td><a class="btn btn-warning" href="result.php?id=$<?=$que['id'];?>">投票結果</a></td>
-					<td><a class="btn btn-info" href="vote.php?=<?$que['id'];?>">我要投票</a></td>
+					<td><a class="btn btn-warning" href="result.php?id=<?=$que['id'];?>">投票結果</a></td>
+					<td><a class="btn btn-info" href="vote.php?id=<?=$que['id'];?>">我要投票</a></td>
 
 				</tr>
 				<?php

@@ -16,8 +16,6 @@
 		<h1 class="text-center">投票結果</h1>
 	</header>
 	<main class="container">
-
-
 		<?php
 		$subject = $Que->find($_GET['id']);
 		?>
@@ -26,27 +24,30 @@
 			<ul class="list-group col-6 mx-auto">
 				<?php
 				$opts = $Que->all(['subject_id' => $_GET['id']]);
-				foreach ($opts as $ind => $opt) {
+				// 聽老師怎麼說
+				foreach ($opts as $idx => $opt) {
 					$div=($subject['count']>0)?$subject['count']:1;
 					// 分母不能為0, 如果尚未投票 而進入畫面 抓到count沒有值 先將分母變成1
+					// 聽老師怎麼說三元運算式
 					$rate=round($opt['count']/$div,3);
 
 				?>
-					<li class="list-group-item list-group-item-action">
-						<?=$ind+1;?>.
-						<?= $opt['text']; ?>
+					<li class="list-group-item list-group-item-action d-flex">
+						<div class="col-6">
+							<?=$idx+1;?>.
+							<?= $opt['text']; ?>
+						</div>
+						<div class="col-6 d-flex">
+							<div class="col-8 bg-secondary" style="width:<?=$rate*0.667*100;?>%"></div>
+							<div class="col-4">&nbsp;&nbsp;<?=$opt['count'];?>票(<?=$rate*100?>%)</div>
+						</div>
 					</li>
-					<div class="col-6 d-flex">
-						<div class="col-8 bg-secondary" style="width:<?=$rate*0.667*100;?>%"></div>
-						<dic class="col-4">&nbsp;&nbsp;<?=$opt['count'];?>票(<?=$rate*100?>%)</div>
-					</div>
 				<?php
 				}
 				?>
 			</ul>
-			<button class="btn btn-primary d-inline-block mx-auto my-5" onclick="location.href='index.php'">返回</button>
-		</form>
-
+			<button class="btn btn-primary d-block mx-auto my-5" onclick="location.href='index.php'">返回</button>
+		
 	</main>
 
 

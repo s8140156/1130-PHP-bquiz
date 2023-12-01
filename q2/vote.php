@@ -16,20 +16,15 @@
 		<h1 class="text-center">問卷投票</h1>
 	</header>
 	<main class="container">
-
-
 		<?php
-		$subject = $Que->find($_GET['id']);
+		$subject=$Que->find($_GET['id']);
 		?>
-		<h2 class="text-center"><?= $subject['text']; ?></h2>
+		<h2 class="text-center"><?=$subject['text'];?></h2>
 		<form action="./api/add_vote.php" method="post">
 			<ul class="list-group col-6 mx-auto">
 				<?php
 				$opts = $Que->all(['subject_id' => $_GET['id']]);
-				foreach ($opts as $ind => $opt) {
-
-
-
+				foreach ($opts as $idx => $opt) {
 				?>
 					<li class="list-group-item list-group-item-action">
 						<input type="radio" name="opt" id="" value="<?= $opt['id']; ?>">
