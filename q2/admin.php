@@ -55,6 +55,7 @@
 				?>
 				<tr>
 					<td><?=$ind+1;?></td>
+					<!-- 因為index起始為0 所以將個數+1讓編號從1開始 -->
 					<td><?=$que['text'];?></td>
 					<td>
 						<button class="btn btn-success">顯示</button>

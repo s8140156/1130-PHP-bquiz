@@ -2,7 +2,7 @@
 
 include_once "../db.php";
 
-dd($_POST);
+// dd($_POST);
 $data=[];
 $data['text']=$_POST['subject'];
 $data['subject_id']=0;
@@ -14,6 +14,8 @@ $Que->save($data);
 foreach($_POST['opt'] as $opt){
 	$data=[];
 	$subject_id=$Que->find(['text'=>$_POST['subject']])['id'];
+	// print_r($Que->find(['text'=>$_POST['subject']]));
+	// echo $subject_id;
 	$data['text']=$opt;
 	$data['subject_id']=$subject_id;
 	$data['count']=0;
