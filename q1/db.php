@@ -5,7 +5,8 @@ session_start();
 class DB
 {
 
-    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=bquiz";
+    protected $dsn = "mysql:localhost;charset=utf8;dbname=s1120406"; //遠端資料庫
+    // protected $dsn = "mysql:host=localhost;charset=utf8;dbname=bquiz";
     protected $pdo;
     protected $table;
     // 在宣告成員 不能有運算式or new甚麼...
@@ -14,7 +15,8 @@ class DB
     {
         $this->table = $table;
         // $this:用db這個class產生的物件 ->:存取屬性或方法(統稱為成員)
-        $this->pdo = new PDO($this->dsn, 'root', '');
+        $this->pdo = new PDO($this->dsn, 's1120406', 's1120406'); 
+        // $this->pdo = new PDO($this->dsn, 'root', '');
     }
 
 
