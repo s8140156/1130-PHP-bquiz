@@ -183,8 +183,8 @@ function dd($array)
     echo "</pre>";
 }
 
-function do($url){
-    
+function to($url){
+    header("location:$url");
 }
 
 $Que=new DB('que');
