@@ -11,12 +11,17 @@ class DB
     protected $table;
     // 在宣告成員 不能有運算式or new甚麼...
 
+    // 初始化 使用constructor, 在物件被實體化(使用new)時"自動"被呼叫, 用來進行初始化工作
+    // 接受一個參數$table
     public function __construct($table)
     {
         $this->table = $table;
         // $this:用db這個class產生的物件 ->:存取屬性或方法(統稱為成員)
+        // 接收一個資料表$table
         $this->pdo = new PDO($this->dsn, 's1120406', 's1120406'); 
         // $this->pdo = new PDO($this->dsn, 'root', '');//本地端
+        // 使用 PDO 類別建立一個資料庫連線，並將連線物件設定為類別的屬性 $this->pdo
+        // 在這裡，$this->dsn 是一個類別的屬性，可能是用來指定資料庫連線的 DSN（Data Source Name）的字串
     }
 
 
