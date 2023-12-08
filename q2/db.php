@@ -5,8 +5,8 @@ session_start();
 class DB
 {
 
-    protected $dsn = "mysql:localhost;charset=utf8;dbname=s1120406"; //遠端資料庫
-    // protected $dsn = "mysql:host=localhost;charset=utf8;dbname=bquiz";(本地端)
+    // protected $dsn = "mysql:localhost;charset=utf8;dbname=s1120406"; //遠端資料庫
+    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=bquiz"; //(本地端)
     protected $pdo;
     protected $table;
     // 在宣告成員 不能有運算式or new甚麼...
@@ -18,8 +18,8 @@ class DB
         $this->table = $table;
         // $this:用db這個class產生的物件 ->:存取屬性或方法(統稱為成員)
         // 接收一個資料表$table
-        $this->pdo = new PDO($this->dsn, 's1120406', 's1120406'); 
-        // $this->pdo = new PDO($this->dsn, 'root', '');//本地端
+        // $this->pdo = new PDO($this->dsn, 's1120406', 's1120406'); 
+        $this->pdo = new PDO($this->dsn, 'root', ''); //本地端
         // 使用 PDO 類別建立一個資料庫連線，並將連線物件設定為類別的屬性 $this->pdo
         // 在這裡，$this->dsn 是一個類別的屬性，可能是用來指定資料庫連線的 DSN（Data Source Name）的字串
     }
